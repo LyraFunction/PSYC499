@@ -47,3 +47,23 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Python specific files
+# Byte-code files
+*.pyc
+__pycache__/
+
+# Virtual environment
+.env/
+venv/
+env/
+
+# Editor backup files
+*~
+*.swp
+
+# Miscellaneous
+.DS_Store # Mac specific file
+npm-debug.log # Node.js debug log
+*.log     # Log files
+
