@@ -1,4 +1,5 @@
-# PSYC499
+# Honors in Psychology Thesis
+## Presidential Election Vote Outcome as a Predictor in County Level Sexual Orientation and Gender Motivated Hate Crimes across the United States
 
 ## Overview
 This repo contains all the materials for my undergraduate thesis.
