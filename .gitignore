@@ -234,3 +234,15 @@ cython_debug/
 .DS_Store # Mac specific file
 *.log     # Log files
 
+supplemental/.DS_Store
+supplemental/diagrams/.DS_Store
+supplemental/diagrams/ProposalDiagramRes.af
+scripts/r/.DS_Store
+scripts/python/.DS_Store
+scripts/python/.idea/.DS_Store
+scripts/python/.DS_Store
+scripts/python/.DS_Store
+scripts/.DS_Store
+paper/.DS_Store
+.DS_Store
+.DS_Store
