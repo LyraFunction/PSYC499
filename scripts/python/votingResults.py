@@ -17,7 +17,7 @@ def read_data() -> pandas.DataFrame:
 
 # Drop years older than 2016
 def filter_by_year(file:pandas.DataFrame) -> pandas.DataFrame:
-    return file[file['year'].isin([2016, 2017, 2018, 2019, 2020])]
+    return file[file['year'].isin([2016])]
 
 # Function gathers relevant columns and drops the rest, tabulates votes across medium
 def calculate_party_totals(file: pandas.DataFrame) -> pandas.DataFrame:

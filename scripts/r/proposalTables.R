@@ -1,0 +1,28 @@
+# Start packages
+library(gt)
+library(dplyr)
+
+Election <- c("YEAR","STATE","STATE_PO","COUNT_NAME","COUNTY_FIPS","CANDIDATE","PARTY","CANDIDATEVOTES","TOTALVOTES")
+Header <- c("CFIPS1","CFIPS2","CFIPS3","CFIPS4","CFIPS5","BINCIDNO","STATECOD","LSTPOP1","LSTPOP2","LSTPOP3","LSTPOP4","LSTPOP5","QTR1ACT","QTR2ACT","QTR3ACT","QTR4ACT","F1QACT","F2QACT","F3QACT","F4QACT","HC_FLAG")
+Incident <- c("REC_IR","STATNUM","CITY","STATECOD","POP1","COUNTY1","LSTPOP1","POP2","COUNTY2","LSTPOP2","POP3","COUNTY3","LSTPOP3","POP4","COUNTY4","LSTPOP4","POP5","COUNTY5","LSTPOP5","MASTERYR","QTR1ACT","QTR2ACT","QTR3ACT","QTR4ACT","F1QACT","F2QACT","F3QACT","F4QACT","CFIPS1","CFIPS2","CFIPS3","CFIPS4","CFIPS5","TNUMVTMS","TNUMOFF","OFFCOD1","NUMVTM1","BIASMO1","OFFCOD2","NUMVTM2","BIASMO2","OFFCOD3","NUMVTM3","BIASMO3","OFFCOD4","NUMVTM4","BIASMO4","OFFCOD5","NUMVTM5","BIASMO5","OFFCOD6","NUMVTM6","BIASMO6","OFFCOD7","NUMVTM7","BIASMO7","OFFCOD8","NUMVTM8","BIASMO8","OFFCOD9","NUMVTM9","BIASMO9","OFFCOD10","NUMVTM10","BIASMO10","BIASMO1_2","BIASMO1_3","BIASMO1_4","BIASMO1_5","BIASMO2_2","BIASMO2_3","BIASMO2_4","BIASMO2_5","BIASMO3_2","BIASMO3_3","BIASMO3_4","BIASMO3_5","BIASMO4_2","BIASMO4_3","BIASMO4_4","BIASMO4_5","BIASMO5_2","BIASMO5_3","BIASMO5_4","BIASMO5_5","BIASMO6_2","BIASMO6_3","BIASMO6_4","BIASMO6_5","BIASMO7_2","BIASMO7_3","BIASMO7_4","BIASMO7_5","BIASMO8_2","BIASMO8_3","BIASMO8_4","BIASMO8_5","BIASMO9_2","BIASMO9_3","BIASMO9_4","BIASMO9_5","BIASMO10_2","BIASMO10_3","BIASMO10_4","BIASMO10_5","TNUMVTMSA","TNUMVTMSU18","TNUMOFFA","TNUMOFFU18")
+
+paddedElection <- c(Election, rep(NA, length(Incident) - length(Election)))
+paddedHeader <- c(Header, rep(NA, length(Incident) - length(Header)))
+
+columnGrep |>
+  gt() |>
+  tab_header(
+    title = "Selected Columns",
+    subtitle = "Columns to be used from each Dataset"
+  ) |>
+  fmt(columns = paddedElection)
+  fmt(columns = paddedHeader)
+  fmt(columns = Incident)
+  
+#tabledf <- data.frame(
+  #ElectionData = paddedElection,
+  #HeaderFile = paddedHeader,
+  #IncidentFile = Incident
+#)
+
+columnGrep
