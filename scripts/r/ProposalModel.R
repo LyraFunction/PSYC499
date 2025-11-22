@@ -34,8 +34,10 @@ digraph LGM {
   }
 
   # Edges: Left indicator -> latent variables
-  x1 -> eta1 [splines = line]
-  x1 -> eta2 [splines = line]
+  x1 -> eta1:n [splines = line]
+  x1 -> eta2:n [splines = line]
+  eta1:ne -> eta2:nw
+  eta2:nw -> eta1:ne
 
   # Edges: Right indicators -> latent variables
   x2  -> x3  [style = invis]
