@@ -4,8 +4,8 @@
 This repo contains all the materials for my undergraduate thesis.
 
 ## Repository Structure
--   `data/clean_data` will contain the files used in data analysis.
--   `scripts` will contain the R, LaTeX, and Python files used for the project along with any relevent documention.
--   `paper` will contain the PDFs submitted for the project, including the proposal, defense, and final drafts.
--   `citations` will contain BibTex files for the project
+-   `data` will contain the files used in data analysis.
+-   `scripts` will contain the R, LaTeX, and Python files used for the project, along with any relevant documentation.
+-   `final` will contain the files for my final thesis manuscript
+-   `proposal` will contain files pertaining to my thesis proposal, including the final draft and citations
 -   `supplementals` will contain supplemental information such as rational for data decisions.
