@@ -9,3 +9,5 @@ This repo contains all the materials for my undergraduate thesis.
 -   `paper` will contain the PDFs submitted for the project, including the proposal, defense, and final drafts.
 -   `citations` will contain BibTex files for the project
 -   `supplementals` will contain supplemental information such as rational for data decisions.
+
+## Replication Instructions
