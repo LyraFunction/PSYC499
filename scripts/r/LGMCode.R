@@ -8,11 +8,7 @@ options(max.print=99999)
 
 # Set directory for output and load in dataset
 setwd("~/Desktop/Projects/Programming/PSYC499/scripts/r")
-data <- read_parquet("~/Desktop/Projects/Programming/PSYC499/data_clean/Dataset_clean_1.parquet")
-
-#The following lavaan code specifies the model
-#Replace the harm_block_ variables with the names of your timepoint variables
-#They must be in order.
+data <- read_parquet("~/Desktop/Projects/Programming/PSYC499/data_clean/Dataset_clean_WIDE.parquet")
 
 # In Lavaan, =~ is used to assign indicators to a latent factor
 # ~ is used to designate a path (i.e., regression) and ~~ is used to designate covariances
@@ -35,7 +31,7 @@ slope~Winning_Party
 
 # This will model the covariance between the latent intercept and the latent 
 # slope
-#This can tell you if counties that started higher in hate crimes also increased faster
+# This can tell you if counties that started higher in hate crimes also increased faster
 intercept ~~ slope
 '
 #If you don't know how to use R Markdown, you can use the function "sink" to create a text file of your output
