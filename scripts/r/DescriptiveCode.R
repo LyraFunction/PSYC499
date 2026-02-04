@@ -31,12 +31,43 @@ data_2018 <- Dataset_clean_LONG %>% filter(Year == 2018)
 data_2019 <- Dataset_clean_LONG %>% filter(Year == 2019)
 data_2020 <- Dataset_clean_LONG %>% filter(Year == 2020)
 
+# Select relevant columns
+Quarter_Long <- Dataset_clean_WIDE[, c("FIPS", "State_name", "County_Name", 
+                                       "Y2017_QTR1", "Y2017_QTR2", "Y2017_QTR3",
+                                       "Y2017_QTR4", "Y2018_QTR1", "Y2018_QTR2", 
+                                       "Y2018_QTR3", "Y2018_QTR4", "Y2019_QTR1",
+                                       "Y2019_QTR2", "Y2019_QTR3", "Y2019_QTR4",
+                                       "Y2020_QTR1", "Y2020_QTR2", "Y2020_QTR3",
+                                       "Y2020_QTR4", "Winning_Party", 
+                                       "Y2017_Population", "Y2018_Population",
+                                       "Y2019_Population", "Y2020_Population")]
+
+# Pivot for quarters
+Quarter_Long <- Quarter_Long %>% 
+  pivot_longer(
+    cols = c("Y2017_QTR1", "Y2017_QTR2", "Y2017_QTR3", "Y2017_QTR4", 
+             "Y2018_QTR1", "Y2018_QTR2", "Y2018_QTR3", "Y2018_QTR4", 
+             "Y2019_QTR1", "Y2019_QTR2", "Y2019_QTR3", "Y2019_QTR4", 
+             "Y2020_QTR1", "Y2020_QTR2", "Y2020_QTR3", "Y2020_QTR4"), 
+    names_to = "Quarter",
+    values_to = "Total"
+  )
+
 ## Plots
 # Violin plot
-violin<-ggplot(Dataset_clean_LONG, aes(x=Year, y=Total_per_capita, fill=Winning_Party)) +
+violin <- ggplot(Dataset_clean_LONG, aes(x=Year, y=Total_per_capita, color = Winning_Party)) +
   geom_violin(position=position_dodge(1)) +
-  scale_fill_manual(values = c("#0015BC", "#E81B23"))
-violin
+  labs(title = "Bias Motivated Incidents per Year",
+       x = "Year",
+       y = "Total Bias Events",
+       color = "Party") +
+  scale_color_manual(labels = c("Democrat", "Republican"), values = c("#0015BC", "#E81B23")) +
+  theme_bw()
+print(violin + scale_y_sqrt()) + theme(
+  legend.position = c(.99, .99),
+  legend.justification = c("right", "top"),
+  legend.box.just = "right"
+)
 # line plot
 drops <- c("County_Name","Democratic_Votes","Republican_Votes","State_name",
            "Y2017_Anti-Lesbian","Y2018_Anti-Lesbian","Y2019-Anti_Lesbian",
@@ -76,14 +107,20 @@ plot_grid(y2017_group, y2018_group, y2019_group, y2020_group,
 
 # Rank Order Change Plot
 rank_plot <- ggplot(Dataset_clean_LONG, aes(x = Year, y = Total_per_capita, group = interaction(FIPS, Winning_Party), color = Winning_Party)) +
-  geom_line() +
-  geom_point() +
-  labs(title = "Voting Trends Over Years",
+  geom_line(linewidth =.35) +
+  geom_point(size = 1) +
+  labs(title = "Bias Motivated Incidents over Time",
        x = "Year",
-       y = "Votes",
+       y = "Total Bias Events",
        color = "Party") +
-  theme_minimal()
-print(rank_plot)
+  scale_color_manual(labels = c("Democrat", "Republican"), values = c("#0015BC", "#E81B23")) +
+  theme_bw()
+print(rank_plot + scale_y_sqrt()) + theme(
+  legend.position = c(.99, .99),
+  legend.justification = c("right", "top"),
+  legend.box.just = "right"
+)
+
 # Map
 
 
