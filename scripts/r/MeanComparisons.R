@@ -9,40 +9,50 @@ library(ggplot2)
 library(conover.test)
 
 ## Import data
-bias_data <- read_parquet("~/Desktop/Projects/Programming/PSYC499/data_clean/Dataset_clean_BIAS.parquet")
-tota_data <- read_parquet("~/Desktop/Projects/Programming/PSYC499/data_clean/Dataset_clean_LONG.parquet")
+Dataset_clean_LONG <- read_parquet("~/Desktop/Projects/Programming/PSYC499/data_clean/Dataset_clean_LONG.parquet")
 
 # Prep data
-bias_data$Bias_Types <- as.factor(data$Bias_Types)
-mean_values <- data %>%
-  group_by(Bias_Types) %>%
-  summarise(Mean_Bias_Mean = mean(Bias_Mean_per_capita, na.rm = TRUE), .groups = "drop") %>%
-  arrange(desc(Mean_Bias_Mean))  # Order by descending mean values
 
 
+Dataset_clean_LONG <- Dataset_clean_LONG[complete.cases(Dataset_clean_LONG), ]
+Dataset_clean_LONG$Year <- as.factor(Dataset_clean_LONG$Year)
+Dataset_clean_LONG$Winning_Party <- as.factor(Dataset_clean_LONG$Winning_Party)
+
+data_2017 <- Dataset_clean_LONG %>% filter(Year == 2017)
+data_2018 <- Dataset_clean_LONG %>% filter(Year == 2018)
+data_2019 <- Dataset_clean_LONG %>% filter(Year == 2019)
+data_2020 <- Dataset_clean_LONG %>% filter(Year == 2020)
 # Group comparisons
+t.test(x = data_2017$Winning_Party, y = data_2017$Total_per_capita, paired = FALSE)
+t.test(x = data_2018$Winning_Party, y = data_2018$Total_per_capita, paired = FALSE)
+t.test(x = data_2019$Winning_Party, y = data_2019$Total_per_capita, paired = FALSE)
+t.test(x = data_2020$Winning_Party, y = data_2020$Total_per_capita, paired = FALSE)
+
+wilcox.test(x = data_2017$Winning_Party, y = data_2017$Total_per_capita, paired = FALSE, conf.int = TRUE)
+wilcox_effsize(data = data_2017, formula = Total_per_capita ~ Winning_Party, ref.group = "1", paired = FALSE, alternative = "less", ci = TRUE)
+wilcox.test(x = data_2018$Winning_Party, y = data_2018$Total_per_capita, paired = FALSE, conf.int = TRUE)
+wilcox_effsize(data = data_2018, formula = Total_per_capita ~ Winning_Party, ref.group = "1", paired = FALSE, alternative = "less", ci = TRUE)
+wilcox.test(x = data_2019$Winning_Party, y = data_2019$Total_per_capita, paired = FALSE, conf.int = TRUE)
+wilcox_effsize(data = data_2019, formula = Total_per_capita ~ Winning_Party, ref.group = "1", paired = FALSE, alternative = "less", ci = TRUE)
+wilcox.test(x = data_2020$Winning_Party, y = data_2020$Total_per_capita, paired = FALSE, conf.int = TRUE)
+wilcox_effsize(data = data_2020, formula = Total_per_capita ~ Winning_Party, ref.group = "1", paired = FALSE, alternative = "less", ci = TRUE)
 
 
 # Year analysis
+t.test(x = data_2017$Total_per_capita, y = data_2018$Total_per_capita, paired = TRUE)
+t.test(x = data_2018$Total_per_capita, y = data_2019$Total_per_capita, paired = TRUE)
+t.test(x = data_2019$Total_per_capita, y = data_2020$Total_per_capita, paired = TRUE)
 
+wilcox.test(x = data_2017$Total_per_capita, y = data_2018$Total_per_capita, paired = TRUE, conf.int = TRUE)
+wilcox.test(x = data_2018$Total_per_capita, y = data_2019$Total_per_capita, paired = TRUE, conf.int = TRUE)
+wilcox.test(x = data_2019$Total_per_capita, y = data_2020$Total_per_capita, paired = TRUE, conf.int = TRUE)
+wilcox_effsize(data = Dataset_clean_LONG, formula = Total_per_capita ~ Year, comparisons = list(c("2017", "2018"), c("2018", "2019"), c("2019", "2020")), paired = TRUE, alternative = "less", ci = TRUE)
+
+
+rm(data_2017)
+rm(data_2018)
+rm(data_2019)
+rm(data_2020)
 # Exploratory hypothesis
 dunn.test(data$Bias_Mean_per_capita, data$Bias_Types, method = "bonferroni")
 conover.test(x = data$Bias_Mean_per_capita, g = data$Bias_Types, kw=TRUE, label=TRUE, list = TRUE, alpha = .01)
-
-
-ggplot(data, aes(x = Bias_Types, y = Bias_Mean_per_capita)) +
-  geom_boxplot() +
-  theme_minimal() +
-  labs(title = "Bias Mean by Type", x = "Bias Type", y = "Mean Bias")
-ggplot(data, aes(x = Bias_Types, y = Bias_Mean_per_capita)) +
-  geom_bar() +
-  theme_minimal() +
-  labs(title = "Bias Mean by Type", x = "Bias Type", y = "Mean Bias")
-Bias_Bar <-ggplot(mean_values,aes(Bias_Types,Mean_Bias_Mean))+geom_bar(stat="identity")
-Bias_Bar
-Bias_Bar+geom_path(x=c(1,1,2,2),y=c(25,26,26,25))+
-  geom_path(x=c(2,2,3,3),y=c(37,38,38,37))+
-  geom_path(x=c(3,3,4,4),y=c(49,50,50,49))+
-  annotate("text",x=1.5,y=27,label="p=0.012")+
-  annotate("text",x=2.5,y=39,label="p<0.0001")+
-  annotate("text",x=3.5,y=51,label="p<0.0001")

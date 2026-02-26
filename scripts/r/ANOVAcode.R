@@ -9,12 +9,10 @@ library(performance)
 Dataset_clean_LONG <- read_parquet("~/Desktop/Projects/Programming/PSYC499/data_clean/Dataset_clean_LONG.parquet")
 
 # Prep data
+Dataset_clean_LONG <- Dataset_clean_LONG[complete.cases(Dataset_clean_LONG), ]
 Dataset_clean_LONG$Year <- as.factor(Dataset_clean_LONG$Year)
 Dataset_clean_LONG$Winning_Party <- as.factor(Dataset_clean_LONG$Winning_Party)
 
-Dataset_clean_LONG %>%
-  group_by(Year, Winning_Party) %>%
-  get_summary_stats(Total_per_capita, type = "full")
 ## Check assumptions
 # Homogeneity of Variances
 o1 <- aov_ez("FIPS", "Total_per_capita", Dataset_clean_LONG, 
