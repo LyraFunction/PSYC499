@@ -11,3 +11,4 @@ This repo contains all the materials for my undergraduate thesis.
 -   `supplementals` will contain supplemental information such as rational for data decisions.
 
 ## Replication Instructions
+In order to replicate my data, please download this repo and download the 2016 vote, along with the 2017, 2018, 2019, and 2020 UCR files from the links found in the citations. Once downloaded place all the files within a folder named data_raw, then simply run the provided python file to create the cleaned data. If you wish to use my R code, run the provided scripts. 
