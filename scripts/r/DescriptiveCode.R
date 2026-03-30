@@ -6,15 +6,14 @@ setwd("~/Desktop/Projects/Programming/PSYC499/scripts/r")
 
 # Packages
 library(arrow) # For files
-library(ggplot2) # For graphs and charts
 library(patchwork) # ^
 library(cowplot) # ^
 library(ggh4x) # ˆ
-library(dplyr) # For data prep
-library(tidyr) # ˆ
+library(tidyverse)
 library(svglite)
 #library(e1071) 
 library(ggh4x)
+library(tidyplots)
 
 ## Read datasets
 Dataset_clean_LONG <- read_parquet(
@@ -24,8 +23,7 @@ Dataset_clean_WIDE <- read_parquet(
 
 ## Prep
 # Wide
-drops <- c("County_Name","Democratic_Votes","Republican_Votes","State_name",
-           "Y2017_Anti-Lesbian","Y2018_Anti-Lesbian","Y2019-Anti_Lesbian",
+drops <- c("Y2017_Anti-Lesbian","Y2018_Anti-Lesbian","Y2019-Anti_Lesbian",
            "Y2020_Anti-Lesbian","Y2017_Anti-Gay","Y2018_Anti-Gay",
            "Y2019_Anti-Gay","Y2020_Anti-Gay","Y2017_Anti-Bisexual",
            "Y2018_Anti-Bisexual","Y2019_Anti-Bisexual","Y2020_Anti-Bisexual",
@@ -40,8 +38,7 @@ Dataset_clean_WIDE <- Dataset_clean_WIDE[ , !(names(Dataset_clean_WIDE) %in% dro
 Dataset_clean_WIDE <- Dataset_clean_WIDE[complete.cases(Dataset_clean_WIDE), ]
 
 # Quarter Prep
-drops <- c("County_Name","Democratic_Votes","Republican_Votes","State_name",
-           "Y2017_Total","Y2018_Total","Y2019_Total","Y2020_Total",
+drops <- c("Y2017_Total","Y2018_Total","Y2019_Total","Y2020_Total",
            "Y2017_Anti-Lesbian","Y2018_Anti-Lesbian","Y2019_Anti-Lesbian","Y2020_Anti-Lesbian",
            "Y2017_Anti-Gay","Y2018_Anti-Gay","Y2019_Anti-Gay","Y2020_Anti-Gay",
            "Y2017_Anti-Bisexual","Y2018_Anti-Bisexual","Y2019_Anti-Bisexual","Y2020_Anti-Bisexual",
@@ -60,14 +57,12 @@ Dataset_clean_QUARTER <- Dataset_clean_QUARTER %>%
     names_to = "Quarter",
     values_to = "Total"
   )
-
 # Reshape the dataframe
 Dataset_clean_QUARTER <- Dataset_clean_QUARTER %>% 
   pivot_longer(
     cols = ("Y2017_Population"), 
     names_to = "Year",
     values_to = "Population")
-
 drops <- c("Y2017_Population","Y2018_Population","Y2019_Population","Y2020_Population",
            "Year")
 Dataset_clean_QUARTER <- Dataset_clean_QUARTER[ , !(names(Dataset_clean_QUARTER) %in% drops)]
@@ -77,7 +72,6 @@ Dataset_clean_QUARTER <- Dataset_clean_QUARTER[complete.cases(Dataset_clean_QUAR
 # Years column
 Year <- rep(c(2017, 2018, 2019, 2020), each = 4)
 Year <- rep(Year, length.out = 49744)
-head(Year)
 # Bind
 Dataset_clean_QUARTER <- cbind(Dataset_clean_QUARTER, Year)
 
@@ -558,10 +552,5 @@ quarter_plot <- ggplot(Dataset_clean_QUARTER, aes(x = Quarter, y = total_per_cap
   )
 print(quarter_plot)
 ggsave(filename =  "Quarter_Rank_Plot.tiff", plot = quarter_plot, width = 40, height = 12)
-
-
-# Waffle
-Waffle <- ggplot(Dataset_clean_QUARTER, aes(x = Quarter, y = total_per_capita, group = Winning_Party)) +
-  geom_
 
 

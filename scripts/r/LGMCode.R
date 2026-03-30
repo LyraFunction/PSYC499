@@ -2,7 +2,6 @@
 library(lavaan)
 library(tidyverse)
 library(arrow)
-library(semPlot)
 
 #Some of the output can get long, so increasing the print output may be necessary
 options(max.print=99999)
@@ -25,6 +24,7 @@ drops <- c("Y2017_Anti-Lesbian","Y2018_Anti-Lesbian","Y2019-Anti_Lesbian",
            "Y2020_Anti-Gender_Nonconforming","Y2020_Total")
 data <- data[, !(names(data) %in% drops)]
 data <- data[complete.cases(data), ]
+# data$Winning_Party <- replace(data$Winning_Party , data$Winning_Party == 0, -1) # Effects coding
 
 # In Lavaan, =~ is used to assign indicators to a latent factor
 # ~ is used to designate a path (i.e., regression) and ~~ is used to designate covariances
@@ -52,40 +52,11 @@ intercept ~~ slope
 '
 #If you don't know how to use R Markdown, you can use the function "sink" to create a text file of your output
 #This starts the sink
-sink(file = "model_output1.txt")
+sink(file = "model_dummy.txt")
 
-fit.growth_1<-growth(sem_model, data = data, se = "bootstrap", missing = "fiml", check.gradient = FALSE, control=list(iter.max=1000))
+fit.growth_1<-growth(sem_model, data = data, estimator = "ML", se = "bootstrap", missing = "ml", check.gradient = FALSE, control=list(iter.max=1000))
 summary(fit.growth_1,fit.measures = TRUE,standardized=T, ci=TRUE)
 parameterEstimates(fit.growth_1)
 
 #This ends the sink
 sink(file = NULL)
-lavExport(fit.growth_1, target = "lavaan", export = TRUE)
-
-
-semPaths(fit.growth_1, what='est', fade= F)
-p <- semPaths(fit.growth_1, 
-              layout = "tree2",
-              centerLevels = TRUE,
-              reorder = TRUE,
-              whatLabels="est",
-              intercepts = TRUE, 
-              residuals = TRUE,
-              thresholds = TRUE,
-              ThreshAtSide = TRUE,
-              node.width = 1,
-              edge.label.cex = 6,
-              style = "ram",
-              mar = c(5, 5, 5, 5))
-plot(p)
-p2 <- set_sem_layout(p,
-                     indicator_order = indicator_order,
-                     indicator_factor = indicator_factor,
-                     factor_layout = factor_layout,
-                     factor_point_to = factor_point_to,
-                     indicator_push = indicator_push,
-                     indicator_spread = indicator_spread,
-                     loading_position = loading_position) |>
-  set_curve(c("slp ~~ int" = -1)) |>
-  mark_sig(fit.growth_1)
-plot(p2)

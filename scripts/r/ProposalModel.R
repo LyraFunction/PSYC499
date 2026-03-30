@@ -5,7 +5,7 @@ library(htmltools)
 svg <- export_svg(grViz("
 digraph LGM {
 
-  graph [rankdir = UD, splines=line]
+  graph [rankdir = UD, splines=curved]
 
   # Global style
   node [fontsize = 12, labelfontname = 'Times New Roman', width = 1.25, height = 1.25, margin = .01]
@@ -26,7 +26,14 @@ digraph LGM {
     x3  [label = '2017,\nQuarter 2',  shape = box, style = filled, fillcolor = white];
     x4  [label = '2017,\nQuarter 3',  shape = box, style = filled, fillcolor = white];
     x5  [label = '2017,\nQuarter 4',  shape = box, style = filled, fillcolor = white];
-    x13 [label = '. . .', shape = plaintext];
+    x6 [label = '2018,\nQuarter 1', shape = box, style = filled, fillcolor = white];
+    x7 [label = '2018,\nQuarter 2', shape = box, style = filled, fillcolor = white];
+    x8 [label = '2018,\nQuarter 3', shape = box, style = filled, fillcolor = white];
+    x9 [label = '2018,\nQuarter 4', shape = box, style = filled, fillcolor = white];
+    x10 [label = '2019,\nQuarter 1', shape = box, style = filled, fillcolor = white];
+    x11 [label = '2019,\nQuarter 2', shape = box, style = filled, fillcolor = white];
+    x12 [label = '2019,\nQuarter 3', shape = box, style = filled, fillcolor = white];
+    x13 [label = '2019,\nQuarter 4', shape = box, style = filled, fillcolor = white];
     x14 [label = '2020,\nQuarter 1', shape = box, style = filled, fillcolor = white];
     x15 [label = '2020,\nQuarter 2', shape = box, style = filled, fillcolor = white];
     x16 [label = '2020,\nQuarter 3', shape = box, style = filled, fillcolor = white];
@@ -48,10 +55,26 @@ digraph LGM {
   x14 -> x15 [style = invis]
   x15 -> x16 [style = invis]
   x16 -> x17 [style = invis]
+  x13 -> x14 [style = invis]
+  x14 -> x15 [style = invis]
+  x15 -> x16 [style = invis]
+  x16 -> x17 [style = invis]
+  x13 -> x14 [style = invis]
+  x14 -> x15 [style = invis]
+  x15 -> x16 [style = invis]
+  x16 -> x17 [style = invis]
   x2:n  -> eta1:s [splines = line];  x2:n  -> eta2:s [splines = line]
   x3:n  -> eta1:s [splines = line];  x3:n  -> eta2:s [splines = line]
   x4:n  -> eta1:s [splines = line];  x4:n  -> eta2:s [splines = line]
   x5:n  -> eta1:s [splines = line];  x5:n  -> eta2:s [splines = line]
+  x6:n -> eta1:s [splines = line];  x14:n -> eta2:s [splines = line]
+  x7:n -> eta1:s [splines = line];  x15:n -> eta2:s [splines = line]
+  x8:n -> eta1:s [splines = line];  x16:n -> eta2:s [splines = line]
+  x9:n -> eta1:s [splines = line];  x17:n -> eta2:s [splines = line]
+  x10:n -> eta1:s [splines = line];  x14:n -> eta2:s [splines = line]
+  x11:n -> eta1:s [splines = line];  x15:n -> eta2:s [splines = line]
+  x12:n -> eta1:s [splines = line];  x16:n -> eta2:s [splines = line]
+  x13:n -> eta1:s [splines = line];  x17:n -> eta2:s [splines = line]
   x14:n -> eta1:s [splines = line];  x14:n -> eta2:s [splines = line]
   x15:n -> eta1:s [splines = line];  x15:n -> eta2:s [splines = line]
   x16:n -> eta1:s [splines = line];  x16:n -> eta2:s [splines = line]
