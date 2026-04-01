@@ -2,7 +2,6 @@
 library(tidyverse)
 library(tidyplots)
 library(patchwork)
-library(dunn.test)
 library(conover.test)
 
 ## Import data
