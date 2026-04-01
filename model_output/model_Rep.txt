@@ -1,0 +1,202 @@
+lavaan 0.6-21 ended normally after 136 iterations
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        22
+
+  Number of observations                          2624
+  Number of missing patterns                         1
+
+Model Test User Model:
+                                                      
+  Test statistic                              6921.867
+  Degrees of freedom                               130
+  P-value (Chi-square)                           0.000
+
+Model Test Baseline Model:
+
+  Test statistic                             28701.965
+  Degrees of freedom                               120
+  P-value                                        0.000
+
+User Model versus Baseline Model:
+
+  Comparative Fit Index (CFI)                    0.762
+  Tucker-Lewis Index (TLI)                       0.781
+                                                      
+  Robust Comparative Fit Index (CFI)             0.762
+  Robust Tucker-Lewis Index (TLI)                0.781
+
+Loglikelihood and Information Criteria:
+
+  Loglikelihood user model (H0)               2002.781
+  Loglikelihood unrestricted model (H1)       5463.714
+                                                      
+  Akaike (AIC)                               -3961.562
+  Bayesian (BIC)                             -3832.368
+  Sample-size adjusted Bayesian (SABIC)      -3902.268
+
+Root Mean Square Error of Approximation:
+
+  RMSEA                                          0.141
+  90 Percent confidence interval - lower         0.138
+  90 Percent confidence interval - upper         0.144
+  P-value H_0: RMSEA <= 0.050                    0.000
+  P-value H_0: RMSEA >= 0.080                    1.000
+                                                      
+  Robust RMSEA                                   0.141
+  90 Percent confidence interval - lower         0.138
+  90 Percent confidence interval - upper         0.144
+  P-value H_0: Robust RMSEA <= 0.050             0.000
+  P-value H_0: Robust RMSEA >= 0.080             1.000
+
+Standardized Root Mean Square Residual:
+
+  SRMR                                           0.287
+
+Parameter Estimates:
+
+  Standard errors                            Bootstrap
+  Number of requested bootstrap draws             1000
+  Number of successful bootstrap draws            1000
+
+Latent Variables:
+                   Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper   Std.lv  Std.all
+  intercept =~                                                                            
+    intercept         1.000                               1.000    1.000    1.000    1.000
+    Y2017_QTR1        1.247    0.288    4.333    0.000    0.653    1.985    0.285    0.835
+    Y2017_QTR2        1.000                               1.000    1.000    0.228    0.843
+    Y2017_QTR3        1.000                               1.000    1.000    0.228    0.791
+    Y2017_QTR4        1.000                               1.000    1.000    0.228    0.564
+    Y2018_QTR1        1.000                               1.000    1.000    0.228    0.727
+    Y2018_QTR2        1.000                               1.000    1.000    0.228    0.776
+    Y2018_QTR3        1.000                               1.000    1.000    0.228    0.731
+    Y2018_QTR4        1.000                               1.000    1.000    0.228    0.802
+    Y2019_QTR1        1.000                               1.000    1.000    0.228    0.798
+    Y2019_QTR2        1.000                               1.000    1.000    0.228    0.827
+    Y2019_QTR3        1.000                               1.000    1.000    0.228    0.789
+    Y2019_QTR4        1.000                               1.000    1.000    0.228    0.824
+    Y2020_QTR1        1.000                               1.000    1.000    0.228    0.766
+    Y2020_QTR2        1.000                               1.000    1.000    0.228    0.759
+    Y2020_QTR3        1.000                               1.000    1.000    0.228    0.703
+    Y2020_QTR4        1.000                               1.000    1.000    0.228    0.658
+  slope =~                                                                                
+    Y2017_QTR1        0.000                               0.000    0.000    0.000    0.000
+    Y2017_QTR2        1.000                               1.000    1.000    0.012    0.043
+    Y2017_QTR3        2.000                               2.000    2.000    0.023    0.081
+    Y2017_QTR4        3.000                               3.000    3.000    0.035    0.086
+    Y2018_QTR1        4.000                               4.000    4.000    0.047    0.148
+    Y2018_QTR2        5.000                               5.000    5.000    0.058    0.198
+    Y2018_QTR3        6.000                               6.000    6.000    0.070    0.224
+    Y2018_QTR4        7.000                               7.000    7.000    0.081    0.286
+    Y2019_QTR1        8.000                               8.000    8.000    0.093    0.326
+    Y2019_QTR2        9.000                               9.000    9.000    0.105    0.380
+    Y2019_QTR3       10.000                              10.000   10.000    0.116    0.402
+    Y2019_QTR4       11.000                              11.000   11.000    0.128    0.462
+    Y2020_QTR1       12.000                              12.000   12.000    0.140    0.469
+    Y2020_QTR2       13.000                              13.000   13.000    0.151    0.503
+    Y2020_QTR3       14.000                              14.000   14.000    0.163    0.502
+    Y2020_QTR4       15.000                              15.000   15.000    0.175    0.504
+
+Covariances:
+                   Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper   Std.lv  Std.all
+  intercept ~~                                                                            
+    slope            -0.001    0.001   -1.294    0.196   -0.002    0.000   -0.364   -0.364
+
+Intercepts:
+                   Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper   Std.lv  Std.all
+    intercept         0.027    0.005    5.461    0.000    0.017    0.037    0.118    0.118
+    slope             0.001    0.000    3.591    0.000    0.001    0.002    0.098    0.098
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|) ci.lower ci.upper   Std.lv  Std.all
+   .Y2017_QTR1        0.035    0.008    4.575    0.000    0.021    0.050    0.035    0.304
+   .Y2017_QTR2        0.023    0.006    4.087    0.000    0.015    0.038    0.023    0.313
+   .Y2017_QTR3        0.034    0.008    4.256    0.000    0.022    0.054    0.034    0.414
+   .Y2017_QTR4        0.116    0.084    1.374    0.170    0.017    0.290    0.116    0.709
+   .Y2018_QTR1        0.052    0.025    2.060    0.039    0.020    0.109    0.052    0.528
+   .Y2018_QTR2        0.041    0.009    4.509    0.000    0.025    0.060    0.041    0.471
+   .Y2018_QTR3        0.052    0.015    3.483    0.000    0.029    0.087    0.052    0.535
+   .Y2018_QTR4        0.036    0.007    4.900    0.000    0.023    0.052    0.036    0.442
+   .Y2019_QTR1        0.036    0.014    2.698    0.007    0.018    0.067    0.036    0.446
+   .Y2019_QTR2        0.030    0.005    6.480    0.000    0.021    0.040    0.030    0.400
+   .Y2019_QTR3        0.037    0.006    6.690    0.000    0.028    0.049    0.037    0.447
+   .Y2019_QTR4        0.030    0.003    8.436    0.000    0.023    0.037    0.030    0.385
+   .Y2020_QTR1        0.040    0.009    4.742    0.000    0.027    0.062    0.040    0.454
+   .Y2020_QTR2        0.041    0.007    5.862    0.000    0.028    0.055    0.041    0.449
+   .Y2020_QTR3        0.054    0.011    5.098    0.000    0.036    0.078    0.054    0.511
+   .Y2020_QTR4        0.067    0.015    4.497    0.000    0.041    0.096    0.067    0.554
+    intercept         0.052    0.038    1.374    0.170    0.004    0.132    1.000    1.000
+    slope             0.000    0.000    2.451    0.014    0.000    0.000    1.000    1.000
+
+          lhs op        rhs    est    se      z pvalue ci.lower ci.upper
+1   intercept =~  intercept  1.000 0.000     NA     NA    1.000    1.000
+2   intercept =~ Y2017_QTR1  1.247 0.288  4.333  0.000    0.653    1.985
+3   intercept =~ Y2017_QTR2  1.000 0.000     NA     NA    1.000    1.000
+4   intercept =~ Y2017_QTR3  1.000 0.000     NA     NA    1.000    1.000
+5   intercept =~ Y2017_QTR4  1.000 0.000     NA     NA    1.000    1.000
+6   intercept =~ Y2018_QTR1  1.000 0.000     NA     NA    1.000    1.000
+7   intercept =~ Y2018_QTR2  1.000 0.000     NA     NA    1.000    1.000
+8   intercept =~ Y2018_QTR3  1.000 0.000     NA     NA    1.000    1.000
+9   intercept =~ Y2018_QTR4  1.000 0.000     NA     NA    1.000    1.000
+10  intercept =~ Y2019_QTR1  1.000 0.000     NA     NA    1.000    1.000
+11  intercept =~ Y2019_QTR2  1.000 0.000     NA     NA    1.000    1.000
+12  intercept =~ Y2019_QTR3  1.000 0.000     NA     NA    1.000    1.000
+13  intercept =~ Y2019_QTR4  1.000 0.000     NA     NA    1.000    1.000
+14  intercept =~ Y2020_QTR1  1.000 0.000     NA     NA    1.000    1.000
+15  intercept =~ Y2020_QTR2  1.000 0.000     NA     NA    1.000    1.000
+16  intercept =~ Y2020_QTR3  1.000 0.000     NA     NA    1.000    1.000
+17  intercept =~ Y2020_QTR4  1.000 0.000     NA     NA    1.000    1.000
+18      slope =~ Y2017_QTR1  0.000 0.000     NA     NA    0.000    0.000
+19      slope =~ Y2017_QTR2  1.000 0.000     NA     NA    1.000    1.000
+20      slope =~ Y2017_QTR3  2.000 0.000     NA     NA    2.000    2.000
+21      slope =~ Y2017_QTR4  3.000 0.000     NA     NA    3.000    3.000
+22      slope =~ Y2018_QTR1  4.000 0.000     NA     NA    4.000    4.000
+23      slope =~ Y2018_QTR2  5.000 0.000     NA     NA    5.000    5.000
+24      slope =~ Y2018_QTR3  6.000 0.000     NA     NA    6.000    6.000
+25      slope =~ Y2018_QTR4  7.000 0.000     NA     NA    7.000    7.000
+26      slope =~ Y2019_QTR1  8.000 0.000     NA     NA    8.000    8.000
+27      slope =~ Y2019_QTR2  9.000 0.000     NA     NA    9.000    9.000
+28      slope =~ Y2019_QTR3 10.000 0.000     NA     NA   10.000   10.000
+29      slope =~ Y2019_QTR4 11.000 0.000     NA     NA   11.000   11.000
+30      slope =~ Y2020_QTR1 12.000 0.000     NA     NA   12.000   12.000
+31      slope =~ Y2020_QTR2 13.000 0.000     NA     NA   13.000   13.000
+32      slope =~ Y2020_QTR3 14.000 0.000     NA     NA   14.000   14.000
+33      slope =~ Y2020_QTR4 15.000 0.000     NA     NA   15.000   15.000
+34  intercept ~~      slope -0.001 0.001 -1.294  0.196   -0.002    0.000
+35 Y2017_QTR1 ~~ Y2017_QTR1  0.035 0.008  4.575  0.000    0.021    0.050
+36 Y2017_QTR2 ~~ Y2017_QTR2  0.023 0.006  4.087  0.000    0.015    0.038
+37 Y2017_QTR3 ~~ Y2017_QTR3  0.034 0.008  4.256  0.000    0.022    0.054
+38 Y2017_QTR4 ~~ Y2017_QTR4  0.116 0.084  1.374  0.170    0.017    0.290
+39 Y2018_QTR1 ~~ Y2018_QTR1  0.052 0.025  2.060  0.039    0.020    0.109
+40 Y2018_QTR2 ~~ Y2018_QTR2  0.041 0.009  4.509  0.000    0.025    0.060
+41 Y2018_QTR3 ~~ Y2018_QTR3  0.052 0.015  3.483  0.000    0.029    0.087
+42 Y2018_QTR4 ~~ Y2018_QTR4  0.036 0.007  4.900  0.000    0.023    0.052
+43 Y2019_QTR1 ~~ Y2019_QTR1  0.036 0.014  2.698  0.007    0.018    0.067
+44 Y2019_QTR2 ~~ Y2019_QTR2  0.030 0.005  6.480  0.000    0.021    0.040
+45 Y2019_QTR3 ~~ Y2019_QTR3  0.037 0.006  6.690  0.000    0.028    0.049
+46 Y2019_QTR4 ~~ Y2019_QTR4  0.030 0.003  8.436  0.000    0.023    0.037
+47 Y2020_QTR1 ~~ Y2020_QTR1  0.040 0.009  4.742  0.000    0.027    0.062
+48 Y2020_QTR2 ~~ Y2020_QTR2  0.041 0.007  5.862  0.000    0.028    0.055
+49 Y2020_QTR3 ~~ Y2020_QTR3  0.054 0.011  5.098  0.000    0.036    0.078
+50 Y2020_QTR4 ~~ Y2020_QTR4  0.067 0.015  4.497  0.000    0.041    0.096
+51  intercept ~~  intercept  0.052 0.038  1.374  0.170    0.004    0.132
+52      slope ~~      slope  0.000 0.000  2.451  0.014    0.000    0.000
+53 Y2017_QTR1 ~1             0.000 0.000     NA     NA    0.000    0.000
+54 Y2017_QTR2 ~1             0.000 0.000     NA     NA    0.000    0.000
+55 Y2017_QTR3 ~1             0.000 0.000     NA     NA    0.000    0.000
+56 Y2017_QTR4 ~1             0.000 0.000     NA     NA    0.000    0.000
+57 Y2018_QTR1 ~1             0.000 0.000     NA     NA    0.000    0.000
+58 Y2018_QTR2 ~1             0.000 0.000     NA     NA    0.000    0.000
+59 Y2018_QTR3 ~1             0.000 0.000     NA     NA    0.000    0.000
+60 Y2018_QTR4 ~1             0.000 0.000     NA     NA    0.000    0.000
+61 Y2019_QTR1 ~1             0.000 0.000     NA     NA    0.000    0.000
+62 Y2019_QTR2 ~1             0.000 0.000     NA     NA    0.000    0.000
+63 Y2019_QTR3 ~1             0.000 0.000     NA     NA    0.000    0.000
+64 Y2019_QTR4 ~1             0.000 0.000     NA     NA    0.000    0.000
+65 Y2020_QTR1 ~1             0.000 0.000     NA     NA    0.000    0.000
+66 Y2020_QTR2 ~1             0.000 0.000     NA     NA    0.000    0.000
+67 Y2020_QTR3 ~1             0.000 0.000     NA     NA    0.000    0.000
+68 Y2020_QTR4 ~1             0.000 0.000     NA     NA    0.000    0.000
+69  intercept ~1             0.027 0.005  5.461  0.000    0.017    0.037
+70      slope ~1             0.001 0.000  3.591  0.000    0.001    0.002

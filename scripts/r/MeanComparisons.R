@@ -53,7 +53,3 @@ rm(data_2017)
 rm(data_2018)
 rm(data_2019)
 rm(data_2020)
-rm(drops)
-# Exploratory hypothesis
-dunn.test(data$Bias_Mean_per_capita, data$Bias_Types, method = "bonferroni")
-conover.test(x = data$Bias_Mean_per_capita, g = data$Bias_Types, kw=TRUE, label=TRUE, list = TRUE, alpha = .01)
