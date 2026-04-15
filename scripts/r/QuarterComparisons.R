@@ -110,6 +110,51 @@ Quarter_Plot <- Dataset_clean_WIDE |>
     "2020_Quarter_3_Cap" = '2020 Q3',
     "2020_Quarter_4_Cap" = '2020 Q4'))
 
+DefenseQuarter <- Dataset_clean_WIDE |> 
+  #mutate(w = paste0(Quarter, "&", Year))|>
+  tidyplot(x = Quarter, y = Total) |>
+  add_ci95_ribbon() |>
+  add_mean_line(linewidth = .25) |>
+  theme_minimal_xy() |>
+  adjust_size(height = 90, width = NA) |>
+  adjust_colors(new_colors = "#63187A", saturation = .75) |>
+  adjust_font(fontsize = 14, family = "Helvetica Neue") |>
+  #adjust_title(title = "Incidents Per Capita For All Counties", face = "bold") |>
+  adjust_x_axis(rotate_labels = "TRUE", title = "Year & Quarter")|>
+  adjust_y_axis_title("Incidents per Capita") |>
+  rename_x_axis_labels(new_names = c(
+    "2017_Quarter_1_Cap" = "2017 Q1",
+    "2017_Quarter_2_Cap" = '2017 Q2',
+    "2017_Quarter_3_Cap" = '2017 Q3',
+    "2017_Quarter_4_Cap" = '2017 Q4',
+    "2018_Quarter_1_Cap" = '2018 Q1',
+    "2018_Quarter_2_Cap" = '2018 Q2',
+    "2018_Quarter_3_Cap" = '2018 Q3',
+    "2018_Quarter_4_Cap" = '2018 Q4',
+    "2019_Quarter_1_Cap" = '2019 Q1',
+    "2019_Quarter_2_Cap" = '2019 Q2',
+    "2019_Quarter_3_Cap" = '2019 Q3',
+    "2019_Quarter_4_Cap" = '2019 Q4',
+    "2020_Quarter_1_Cap" = '2020 Q1',
+    "2020_Quarter_2_Cap" = '2020 Q2',
+    "2020_Quarter_3_Cap" = '2020 Q3',
+    "2020_Quarter_4_Cap" = '2020 Q4'))
+
+DefenseYear <- Dataset_clean_WIDE |> 
+  tidyplot(x = Year, y = Total) |>
+  add_mean_bar()|>
+  add_ci95_errorbar(color = "black", width = .25, linewidth = .4) |>
+  theme_minimal_xy() |>
+  adjust_size(height = 60, width = NA) |>
+  adjust_colors(new_colors = "#63187A", saturation = .5) |>
+  adjust_font(fontsize = 14, family = "Helvetica Neue") |>
+  #adjust_title(title = "Incidents Per Capita For All Counties", face = "bold") |>
+  adjust_x_axis(rotate_labels = "FALSE", title = "Year")|>
+  adjust_y_axis_title("Incidents per Capita")
+
+
+DefenseYear / DefenseQuarter
+
 Quarter_Plot_Party <- Dataset_clean_WIDE |> 
   #mutate(w = paste0(Quarter, "&", Year))|>
   tidyplot(x = Quarter, y = Total, color = Winning_Party) |>
@@ -144,7 +189,54 @@ Quarter_Plot_Party <- Dataset_clean_WIDE |>
     "2020_Quarter_4_Cap" = '2020 Q4'))
 
 Mixed = (Quarter_Plot / Quarter_Plot_Party)
-  
+
+DefenseYear <- Dataset_clean_WIDE |> 
+  #mutate(w = paste0(Quarter, "&", Year))|>
+  tidyplot(x = Year, y = Total, color = Winning_Party) |>
+  add_mean_bar()|>
+  add_ci95_errorbar(color = "black", width = .25, linewidth = .4) |>
+  theme_minimal_xy() |>
+  adjust_size(height = 60, width = NA) |>
+  adjust_colors(new_colors = c("#0015BC", "#E81B23"), saturation = .75) |>
+  adjust_font(fontsize = 14, family = "Helvetica Neue") |>
+  adjust_x_axis(rotate_labels = "False", title = "Year")|>
+  adjust_y_axis_title("Incidents per Capita") |>
+  adjust_legend_position(position = "none")
+
+DefenseQuarter <- Dataset_clean_WIDE |> 
+  #mutate(w = paste0(Quarter, "&", Year))|>
+  tidyplot(x = Quarter, y = Total, color = Winning_Party) |>
+  add_ci95_ribbon(dodge_width = 0) |>
+  add_mean_line(linewidth = .25, dodge_width = 0) |>
+  theme_minimal_xy() |>
+  adjust_size(height = 90, width = NA) |>
+  adjust_colors(new_colors = c("#0015BC", "#E81B23"), saturation = .75) |>
+  adjust_font(fontsize = 14, family = "helvetica Neue") |>
+  adjust_x_axis(rotate_labels = "TRUE", title = "Year & Quarter")|>
+  adjust_y_axis_title("Incidents per Capita") |>
+  adjust_legend_title("Vote Outcome") |>
+  adjust_legend_position(position = "top") |>
+  rename_color_levels(new_names = c("0" = "Democrat", "1" = "Republican")) |>
+  rename_x_axis_labels(new_names = c(
+    "2017_Quarter_1_Cap" = "2017 Q1",
+    "2017_Quarter_2_Cap" = '2017 Q2',
+    "2017_Quarter_3_Cap" = '2017 Q3',
+    "2017_Quarter_4_Cap" = '2017 Q4',
+    "2018_Quarter_1_Cap" = '2018 Q1',
+    "2018_Quarter_2_Cap" = '2018 Q2',
+    "2018_Quarter_3_Cap" = '2018 Q3',
+    "2018_Quarter_4_Cap" = '2018 Q4',
+    "2019_Quarter_1_Cap" = '2019 Q1',
+    "2019_Quarter_2_Cap" = '2019 Q2',
+    "2019_Quarter_3_Cap" = '2019 Q3',
+    "2019_Quarter_4_Cap" = '2019 Q4',
+    "2020_Quarter_1_Cap" = '2020 Q1',
+    "2020_Quarter_2_Cap" = '2020 Q2',
+    "2020_Quarter_3_Cap" = '2020 Q3',
+    "2020_Quarter_4_Cap" = '2020 Q4'))
+
+DefenseYear / DefenseQuarter
+
 #Quarter_Plot + guides(x = guide_axis_nested(key = "&"), subtitle = "Quarter", title = "Year")
 
 rm(Dataset_clean_WIDE)
