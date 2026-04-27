@@ -2,7 +2,7 @@
 
 ## Repository Structure
 -   `posters` contains PDFs of the project that were printed and presented at various conferences along with the citations used.
--   `scripts` contains the `r`, `LaTeX`, and `Python` files used for the project, along with any extra relevant documentation.
+-   `scripts` contains the `r`, `LaTeX`, and `python` files used for the project, along with any extra relevant documentation.
 -   `final` and `proposal` contain the final PDFs submitted for the thesis defense and proposal, respectively, along with a folder called `citations` with the .bib files for the citations of each manuscript.
 -   `supplementals` contains two folders, `figures` which has all the figures used in the project. The other folder `model_output` has text files that contain the read-outs from lavaan for different model specifications.
 
